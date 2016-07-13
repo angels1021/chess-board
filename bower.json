@@ -1,0 +1,23 @@
+{
+  "name": "tt-categories",
+  "description": "",
+  "main": "dist/app.js",
+  "authors": [
+    "irin <irin1021@gmail>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.0.0",
+    "angular": "angularjs#^1.5.7",
+    "angular-draganddrop": "^0.2.2"
+  }
+}
