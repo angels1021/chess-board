@@ -150,8 +150,45 @@
                 break;
 
             case 'pawn':
-            //pawn white [x, y-1] //clean [x, y-2] check path including //check capture [x-1, y-1] [x+1, y-1]
-            //pawn black [x, y+1] //clean [x, y+2] check path including //check capture [x-1, y+1] [x+1, y+1]
+                xDiff =  Math.abs(to.x - from.x);
+                yDiff =  Math.abs(to.y - from.y);
+                if(to.piece){
+                    console.warn('blocked');
+                    return;
+                }
+                if(xDiff || yDiff > 2){
+                    console.warn('illegal');
+                    return;
+                }
+                if(from.piece.player === 'white'){
+                    //pawn black [x, y+1] //clean [x, y+2] check path including //check capture [x-1, y+1] [x+1, y+1]
+                    yDiff =  to.y - from.y;
+                    if((yDiff < 1) || (from.piece.moved && yDiff > 1)){
+                        console.warn('illegal');
+                        return;
+                    } else {
+                        legal = true;
+                    }
+
+                }else{
+                    //pawn white [x, y-1] //clean [x, y-2] check path including //check capture [x-1, y-1] [x+1, y-1]
+                    yDiff =  to.y - from.y;
+                    if((yDiff > 1) || (from.piece.moved && yDiff < -1)){
+                        console.warn('illegal');
+                        return;
+                    } else {
+                        legal = true;
+                    }
+                }
+
+                if(legal){
+                    to.piece = from.piece;
+                    to.piece.moved = true;
+                    from.piece = null;
+
+                    //check capture.
+                }
+
                 break;
         }
     }
