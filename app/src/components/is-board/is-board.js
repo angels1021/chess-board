@@ -123,7 +123,6 @@
                     }
                 }
 
-                console.log('tests done', legal);
                 if(legal){
                     to.piece = from.piece;
                     from.piece = null;
@@ -170,7 +169,7 @@
         movePiece(from, to){
             let fromSq = _.find(squares, {id:from});
             let toSq = _.find(squares, {id:to});
-            console.log('movePiece', fromSq, toSq);
+            //console.log('movePiece', fromSq, toSq);
             checkMove(fromSq, toSq);
         }
     }
