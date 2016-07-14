@@ -121,13 +121,13 @@
                     if(!legal){
                         console.warn('blocked');
                     }
+                } else{
+                    console.warn('illegal');
                 }
 
                 if(legal){
                     to.piece = from.piece;
                     from.piece = null;
-                }else{
-                    console.warn('illegal');
                 }
 
                 break;
