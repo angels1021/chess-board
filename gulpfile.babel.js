@@ -12,23 +12,25 @@ const uglifyCss = require('gulp-uglifycss');
 const clean = require('gulp-clean');
 const rename = require('gulp-rename');
 const replace = require('gulp-replace');
-const pathsServe = require('./server/paths');
+const concat = require('gulp-concat');
+const bowerFiles = require('main-bower-files');
+const inject = require('gulp-inject');
 
 const dirs = {
     src: './app/src',
-    dest: './app/dist',
+    dest: './app/dist'
 };
 
 const ext = {
     sass:'/**/*.scss',
-    js:'/*.js',
+    js:'/**/*.js',
     html: '/**/*.html'
 };
 
 const paths = {
     sass:`${dirs.src}${ext.sass}`,
     js:`${dirs.src}${ext.js}`,
-    html: `${dirs.example}${ext.html}`,
+    html: `${dirs.src}${ext.html}`,
     dest: `${dirs.dest}/`
 };
 
@@ -43,7 +45,7 @@ gulp.task('clean-style', ()=>{
 });
 
 gulp.task('clean-scripts', ()=>{
-    return gulp.src(`${paths.dest}${ext.js}`)
+    return gulp.src([`${paths.dest}${ext.js}`, `!${paths.dest}/vendor.js`])
         .pipe(clean({force:true}))
 });
 
@@ -56,7 +58,7 @@ gulp.task('styles', ['clean-style'], () => {
         .pipe(gulp.dest(paths.dest));
 });
 
-gulp.task("lint", ['clean-scripts'], function() {
+gulp.task("lint", ['clean-scripts'], () => {
     return gulp.src(paths.js)
         .pipe(jshint({
             esversion:6,
@@ -78,16 +80,10 @@ gulp.task("lint", ['clean-scripts'], function() {
         .pipe(gulp.dest(paths.dest));
 });
 
-gulp.task('watch', () => {
-    gulp.watch(paths.html, ['copy']);
-    gulp.watch(paths.media, ['media']);
-    gulp.watch(paths.lang, ['lang']);
-    gulp.watch(paths.js, ["lint"]);
-    return gulp.watch(paths.sass, ["styles"]);
-});
 
 gulp.task('uglify', () => {
     gulp.src([`${paths.dest}/**/*.css`, `!${paths.dest}/**/*.min.css`])
+        .pipe(concat('all.js'))
         .pipe(uglifyCss({
             "maxLineLen": 300
         }))
@@ -104,15 +100,42 @@ gulp.task('uglify', () => {
         .pipe(gulp.dest(paths.dest));
 });
 
+gulp.task('index', ["lint"], ()=>{
+    var sources = gulp.src(paths.js, {read: false});
+    return gulp.src(`${dirs.src}/index.html`)
+        .pipe(inject(gulp.src(bowerFiles(), {read: false}), {
+            name: 'bower',
+            ignorePath: 'bower_components',
+            addPrefix: "lib"}))
+        .pipe(inject(sources, {relative: true}))
+        .pipe(gulp.dest(`${dirs.src}/`))
+});
+
+gulp.task('copyIndex', ()=>{
+    return gulp.src(`${paths.dest}index.html`)
+        .pipe(clean({force:true}))
+        .pipe(gulp.src(`${dirs.src}/index.html`))
+        .pipe(gulp.dest(paths.dest));
+});
+
 gulp.task('copy', ['clean-html'], () => {
     return gulp.src(paths.html)
         .pipe(gulp.dest(paths.dest));
 });
 
+gulp.task('watch', () => {
+    gulp.watch(paths.html, ['copy']);
+    gulp.watch(paths.media, ['media']);
+    gulp.watch(paths.lang, ['lang']);
+    gulp.watch(paths.js, ['index', 'copyIndex']);
+    gulp.watch('./bower.json', ['index', 'copyIndex']);
+    return gulp.watch(paths.sass, ['styles']);
+});
+
 gulp.task('build', ()=>{
-    gulp.start('copy');
     gulp.start('styles');
-    return gulp.start('lint');
+    gulp.start('index');
+    return gulp.start('copy');
 });
 
 gulp.task('default', ['build'], ()=>{

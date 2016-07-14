@@ -1,0 +1,18 @@
+<div class="is-chess-board">
+    <is-chess-letters class="is-chess-letters" letters="boardCtrl.hrz"></is-chess-letters>
+    <div class="is-chess-board-center">
+        <is-chess-letters class="is-chess-numbers" letters="boardCtrl.vert"></is-chess-letters>
+        <div class="is-chess-board-body">
+            <div class="is-chess-board-line" ng-repeat="vert in boardCtrl.vert">
+                <is-chess-square
+                        class="is-chess-board-square"
+                        move-piece="boardCtrl.movePiece"
+                        square="boardCtrl.getPiece(hrz, vert)"
+                        ng-repeat="hrz in boardCtrl.hrz track by $index">
+                </is-chess-square>
+            </div>
+        </div>
+        <is-chess-letters class="is-chess-numbers" letters="boardCtrl.vert"></is-chess-letters>
+    </div>
+    <is-chess-letters class="is-chess-letters" letters="boardCtrl.hrz"></is-chess-letters>
+</div>

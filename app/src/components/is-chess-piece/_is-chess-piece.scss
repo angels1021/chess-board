@@ -1,0 +1,83 @@
+.is-chess-piece{
+  display:block;
+  font-size: 1.5em;
+  font-weight: 600;
+  .is-chess-player-black{
+    &.is-chess-piece-rook{
+      &:before {
+        content: "\265C";
+      }
+    }
+
+    &.is-chess-piece-knight{
+      &:before {
+        content: "\265E";
+      }
+    }
+
+    &.is-chess-piece-bishop{
+      &:before {
+        content: "\265D";
+      }
+    }
+
+    &.is-chess-piece-queen{
+      &:before {
+        content: "\265B";
+      }
+    }
+
+    &.is-chess-piece-king{
+      &:before {
+        content: "\265A";
+      }
+    }
+
+    &.is-chess-piece-pawn{
+      &:before {
+        content: "\265F";
+      }
+    }
+  }
+
+  .is-chess-player-white{
+    &.is-chess-piece-rook{
+      &:before {
+        content: "\2656";
+      }
+    }
+
+    &.is-chess-piece-knight{
+      &:before {
+        content: "\2658";
+      }
+    }
+
+    &.is-chess-piece-bishop{
+      &:before {
+        content: "\2657";
+      }
+    }
+
+    &.is-chess-piece-queen{
+      &:before {
+        content: "\2655";
+      }
+    }
+
+    &.is-chess-piece-king{
+      &:before {
+        content: "\2654";
+      }
+    }
+
+    &.is-chess-piece-pawn{
+      &:before {
+        content: "\2659";
+      }
+    }
+  }
+
+
+}
+

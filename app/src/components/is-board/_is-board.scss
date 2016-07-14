@@ -1,0 +1,82 @@
+.is-chess-board{
+  @include flexVert;
+  @include square(100%);
+
+  .is-chess-letters{
+    height:10%;
+    margin: 0 10%;
+    @include flex;
+    > * {
+      flex-grow: 1;
+    }
+  }
+
+  .is-chess-numbers{
+    width:10%;
+    @include flexVert;
+    > * {
+      flex-grow:1;
+    }
+  }
+
+  .is-chess-board-letter{
+    color: $colorTextLight;
+    @include flex(center, center);
+  }
+
+  .is-chess-board-center{
+    flex-grow:1;
+    @include flex;
+  }
+
+  .is-chess-board-body{
+    flex-grow:1;
+    flex-shrink: 1;
+    @include flexVert;
+  }
+
+  .is-chess-board-line{
+    flex-grow:1;
+    flex-shrink: 1;
+    min-height: 12.5%;
+    @include flex;
+
+    &:nth-child(odd){
+      .is-chess-board-square{
+        &:nth-child(odd){
+          background-color: $colorLight;
+        }
+
+        &:nth-child(even){
+          background-color: $colorDark;
+        }
+      }
+    }
+
+    &:nth-child(even){
+      .is-chess-board-square{
+        &:nth-child(odd){
+          background-color: $colorDark;
+        }
+
+        &:nth-child(even){
+          background-color: $colorLight;
+        }
+      }
+    }
+
+  }
+
+  .is-chess-board-square{
+    flex-grow:1;
+    flex-shrink: 1;
+    min-width: 12.5%;
+
+    .is-chess-square{
+      @include square(100%);
+      @include flex(center, center);
+    }
+  }
+
+
+}

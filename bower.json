@@ -18,6 +18,7 @@
   "dependencies": {
     "jquery": "^3.0.0",
     "angular": "angularjs#^1.5.7",
-    "angular-draganddrop": "^0.2.2"
+    "angular-draganddrop": "^0.2.2",
+    "lodash": "^4.13.1"
   }
 }

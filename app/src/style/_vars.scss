@@ -1,0 +1,36 @@
+$colorText: #797979;
+$colorTextLight: #BBBBBB;
+$colorPlain: #CFD0CF;
+$colorPlainLight: #E7E7E7;
+$colorDark: #6DC7EB;
+$colorLight: #c6efff;
+
+$isFontSize: 16px;
+$isUnit: 0.625em;
+
+/*mixins*/
+@mixin flex($align: stretch, $justify:flex-start){
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+
+  > *{
+    flex: 0 0 auto;
+  }
+}
+
+@mixin flexVert($align: stretch, $justify:flex-start){
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: column;
+
+  > *{
+    flex: 0 0 auto;
+  }
+}
+
+@mixin square($size){
+  width: $size;
+  height: $size;
+}

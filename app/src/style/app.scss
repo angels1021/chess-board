@@ -1,0 +1,21 @@
+@import "vars";
+
+body{
+  margin:0;
+  padding: 0;
+  font-size: $isFontSize;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 200;
+  color: $colorText;
+   > * {
+     box-sizing: border-box;
+   }
+}
+
+.is-chess{
+  @include square(50*$isUnit);
+  display:block;
+  margin: 1*$isUnit auto;
+}
+
+@import "../components/components";

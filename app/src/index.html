@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="is-chess">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Chess board</title>
+    <link href="style/app.css" rel="stylesheet" />
 </head>
-<body ng-app="isChess">
-    <is-chess class="is-chess-container"></is-chess>
+<body>
+    <div id="content" >
+        <is-board class="is-chess"></is-board>
+    </div>
+
+    <!-- bower:js -->
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="/lib/angular/angular.js"></script>
+    <script src="/lib/angular-draganddrop/angular-draganddrop.js"></script>
+    <script src="/lib/lodash/lodash.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:js -->
+
+    <script src="app.js"></script>
+
+    <script src="components/is-board/is-board.js"></script>
+
+    <script src="components/is-chess-letters/is-chess-letters.js"></script>
+
+    <script src="components/is-chess-piece/is-chess-piece.js"></script>
+
+    <script src="components/is-chess-square/is-chess-square.js"></script>
+
+    <!-- endinject -->
 </body>
 </html>

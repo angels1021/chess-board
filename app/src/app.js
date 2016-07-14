@@ -1,5 +1,6 @@
 (function(){
     "use strict";
 
-    angular.module('isChess', ['draganddrop']);
+    angular.module('is-chess', ['draganddrop']);
+    //comment
 })();

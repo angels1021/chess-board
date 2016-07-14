@@ -6,17 +6,22 @@
   "scripts": {
     "postinstall": "node_modules/.bin/bower install"
   },
-  "author":  "irin <irin1021@gmail>",
+  "author": "irin <irin1021@gmail>",
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.10.4",
     "babel": "^6.5.2",
+    "babel-core": "^6.10.4",
     "babel-plugin-external-helpers": "^6.8.0",
     "babel-plugin-transform-runtime": "^6.9.0",
     "babel-preset-es2015": "^6.9.0",
+    "bower-files": "^3.13.3",
+    "gulp": "^3.9.1",
+    "gulp-angular-filesort": "^1.1.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-babel": "^6.1.2",
     "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-inject": "^4.1.0",
     "gulp-jshint": "^2.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
@@ -25,7 +30,8 @@
     "gulp-uglifycss": "^1.0.6",
     "gulp-uglifyjs": "^0.6.2",
     "jshint": "^2.9.2",
-    "jshint-stylish": "^2.2.0"
+    "jshint-stylish": "^2.2.0",
+    "main-bower-files": "^2.13.1"
   },
   "dependencies": {
     "express": "^4.14.0"

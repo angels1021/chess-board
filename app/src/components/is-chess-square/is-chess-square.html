@@ -1,0 +1,15 @@
+<div class="is-chess-square"
+     id="is-chess-square-{{squareCtrl.square.id}}"
+     drop="squareCtrl.onDrop($data, $event)"
+     drag-over="squareCtrl.onDragOver($event)"
+     drop-effect="move"
+     drop-accept="'json/piece-object'">
+
+    <is-chess-piece class="is-chess-piece"
+                    ng-if="squareCtrl.square.piece"
+                    draggable="true"
+                    effect-allowed="move"
+                    draggable-type="piece-object"
+                    draggable-data="squareCtrl.square"
+                    piece="squareCtrl.square.piece"></is-chess-piece>
+</div>
