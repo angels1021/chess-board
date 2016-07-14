@@ -6,7 +6,7 @@
             <div class="is-chess-board-line" ng-repeat="vert in boardCtrl.vert">
                 <is-chess-square
                         class="is-chess-board-square"
-                        move-piece="boardCtrl.movePiece"
+                        move-piece="boardCtrl.movePiece(from, to)"
                         square="boardCtrl.getPiece(hrz, vert)"
                         ng-repeat="hrz in boardCtrl.hrz track by $index">
                 </is-chess-square>

@@ -11,7 +11,7 @@
 
         onDrop(data, ev){
             let square = data['json/piece-object'];
-            this.movePiece()(square.id, this.square.id);
+            this.movePiece({to:this.square.id, from:square.id});
         }
 
         onDragOver(ev){
